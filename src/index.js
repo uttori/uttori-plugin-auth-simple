@@ -188,10 +188,15 @@ class AuthSimple {
    * @param {object} context.config - A provided configuration to use.
    * @example <caption>AuthSimple.bindRoutes(server, context)</caption>
    * const context = {
+   *   hooks: {
+   *     on: (event, callback) => { ... },
+   *   },
    *   config: {
    *     [AuthSimple.configKey]: {
-   *       directory: 'uploads',
-   *       route: '/upload',
+   *       loginPath: '/login',
+   *       logoutPath: '/logout',
+   *       loginMiddleware: [ ... ],
+   *       logoutMiddleware: [ ... ],
    *     },
    *   },
    * };

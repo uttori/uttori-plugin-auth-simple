@@ -126,10 +126,15 @@ Add the login & logout routes to the server object.
 **Example** *(AuthSimple.bindRoutes(server, context))*  
 ```js
 const context = {
+  hooks: {
+    on: (event, callback) => { ... },
+  },
   config: {
     [AuthSimple.configKey]: {
-      directory: 'uploads',
-      route: '/upload',
+      loginPath: '/login',
+      logoutPath: '/logout',
+      loginMiddleware: [ ... ],
+      logoutMiddleware: [ ... ],
     },
   },
 };

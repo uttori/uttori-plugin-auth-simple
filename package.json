@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/uttori/uttori-plugin-auth-simple",
   "keywords": [
-    "upload",
+    "uttori",
     "auth",
     "cookie",
     "express-session"
