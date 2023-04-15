@@ -1,0 +1,122 @@
+{
+  "name": "@uttori/plugin-auth-simple",
+  "version": "1.0.0",
+  "description": "Uttori auth provider using secure cookies through Express Session.",
+  "author": "Matthew Callis <matthew.callis@gmail.com>",
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uttori-plugin-auth-simple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uttori-plugin-auth-simple/issues"
+  },
+  "homepage": "https://github.com/uttori/uttori-plugin-auth-simple",
+  "keywords": [
+    "upload",
+    "auth",
+    "cookie",
+    "express-session"
+  ],
+  "engines": {
+    "node": ">= 16"
+  },
+  "peerDependencies": {
+    "express": "^4",
+    "express-session": "^1.17.3"
+  },
+  "optionalDependencies": {
+    "debug": "^4.3.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.58.0",
+    "ava": "^5.2.0",
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-anti-trojan-source": "^1.1.1",
+    "eslint-plugin-ava": "^14.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^41.1.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-ramda": "^2.5.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-sonarjs": "^0.19.0",
+    "eslint-plugin-xss": "^0.1.12",
+    "express-session": "^1.17.3",
+    "jsdoc": "^4.0.2",
+    "jsdoc-to-markdown": "^8.0.0",
+    "memorystore": "^1.6.7",
+    "nyc": "^15.1.0",
+    "pre-commit": "^1.2.2",
+    "release-it": "^15.10.1",
+    "sinon": "^15.0.3",
+    "superagent": "^8.0.9",
+    "supertest": "^6.3.3",
+    "typescript": "^5.0.4"
+  },
+  "files": [
+    "esm/*",
+    "src/*",
+    "types/*"
+  ],
+  "main": "src/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
+  "typings": "types/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "require": "./src/index.js",
+      "import": "./esm/index.js"
+    }
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "ignoredByWatcher": [
+      "!src/**/*.js"
+    ],
+    "concurrency": 1,
+    "failFast": false,
+    "tap": false,
+    "verbose": true
+  },
+  "nyc": {
+    "cache": true,
+    "all": true,
+    "check-coverage": false,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": []
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    }
+  },
+  "scripts": {
+    "docs": "jsdoc2md --private --example-lang js --template rm.hbs src/index.js > README.md; jsdoc2md --private --example-lang js src/index.js > docs/auth-simple.md",
+    "lint": "eslint .",
+    "make-types": "rm -fr types/ && mkdir types && tsc --project .tsconfig.json",
+    "release": "release-it",
+    "report": "nyc report --reporter=html",
+    "test": "NODE_ENV=test nyc ava",
+    "test-debug": "DEBUG=Uttori* NODE_ENV=test nyc ava --serial --concurrency=1",
+    "validate": "npm ls"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
+}

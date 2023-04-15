@@ -1,0 +1,85 @@
+[![view on npm](https://img.shields.io/npm/v/@uttori/plugin-auth-simple.svg)](https://www.npmjs.com/package/@uttori/plugin-auth-simple)
+[![npm module downloads](https://img.shields.io/npm/dt/@uttori/plugin-auth-simple.svg)](https://www.npmjs.com/package/@uttori/plugin-auth-simple)
+[![Build Status](https://travis-ci.com/uttori/uttori-plugin-auth-simple.svg?branch=master)](https://travis-ci.com/uttori/uttori-plugin-auth-simple)
+[![Coverage Status](https://coveralls.io/repos/github/uttori/uttori-plugin-auth-simple/badge.svg?branch=master)](https://coveralls.io/github/uttori/uttori-plugin-auth-simple?branch=master)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uttori/plugin-auth-simple?label=Minified%20%2B%20GZip)
+
+# Uttori Plugin - Auth Simple
+
+A plugin to add very simple authentication using [express-session](https://github.com/expressjs/session). A great starting point for any Uttori auth solution.
+
+On `/login` success, as HTML it will redirect to the provided `loginRedirectPath` with a `302` status code.
+
+On `/login` success, as JSON it will return the payload from `validateLogin(request.body)` and set it on the session as `request.session.profile`.
+
+On `/login` error, as HTML it will redirect to the provided `loginPath` with a `401` status code.
+
+On `/login` error, as JSON it will return the payload `{ error: true }` with a `401` status code.
+
+Note: When using with browser based `fetch` or the like, ensure `withCredentials` is set to true.
+
+## Install
+
+```bash
+npm install --save uttori-plugin-auth-simple
+```
+
+## Config
+
+```js
+{
+    // Registration Events
+    events: {
+      bindRoutes: ['bind-routes'],
+      validateConfig: ['validate-config'],
+    },
+
+    // Login Path
+    loginPath: '/login',
+
+    // Login Redirect Path
+    loginRedirectPath: '/',
+
+    // Login Route Middleware
+    loginMiddleware: [],
+
+    // Logout Path
+    logoutPath: '/logout',
+
+    // Logout Redirect Path
+    logoutRedirectPath: '/',
+
+    // Logout Route Middleware
+    logoutMiddleware: [],
+
+    // Validation function that will recieve the request and returns an object to be used as the session payload.
+    // If the session is invalid it should return false.
+    validateLogin: (request) => {},
+}
+```
+
+* * *
+
+## API Reference
+
+{{>main}}
+
+* * *
+
+## Tests
+
+To run the test suite, first install the dependencies, then run `npm test`:
+
+```bash
+npm install
+npm test
+DEBUG=Uttori* npm test
+```
+
+## Contributors
+
+* [Matthew Callis](https://github.com/MatthewCallis)
+
+## License
+
+* [MIT](LICENSE)
