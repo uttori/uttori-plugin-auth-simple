@@ -170,7 +170,7 @@ class AuthSimple {
     }
     for (const [method, events] of Object.entries(config.events)) {
       for (const event of events) {
-        if (typeof AuthSimple[method] !== 'function') {
+        if (typeof AuthSimple[method] === 'function') {
           context.hooks.on(event, AuthSimple[method]);
         } else {
           debug(`Missing function "${method}" for key "${event}"`);
