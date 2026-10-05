@@ -4,6 +4,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/uttori/uttori-plugin-auth-simple/badge.svg?branch=master)](https://coveralls.io/github/uttori/uttori-plugin-auth-simple?branch=master)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uttori/plugin-auth-simple?label=Minified%20%2B%20GZip)
 
+# Package Moved
+
+This has been added to the core https://github.com/uttori/uttori-wiki package.
+
 # Uttori Plugin - Auth Simple
 
 A plugin to add very simple authentication using [express-session](https://github.com/expressjs/session). A great starting point for any Uttori auth solution.
